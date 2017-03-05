@@ -1,0 +1,11 @@
+# see git-dpm(1) from git-dpm package
+22312bb50f8fd9692bbb54b237492b32eb30e2dd
+22312bb50f8fd9692bbb54b237492b32eb30e2dd
+0c7ca62c89b183f33da68db9c79b3d7fc365e1c2
+0c7ca62c89b183f33da68db9c79b3d7fc365e1c2
+python-tempita_0.5.2.orig.tar.gz
+8da7851b077af5a540125e3836d9f0f7165eca61
+12648
+debianTag="debian/%e%v"
+patchedTag="patched/%e%v"
+upstreamTag="upstream/%e%u"

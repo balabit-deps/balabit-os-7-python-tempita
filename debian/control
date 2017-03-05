@@ -1,0 +1,28 @@
+Source: python-tempita
+Section: python
+Priority: optional
+Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Uploaders: Christoph Haas <haas@debian.org>, Piotr Ożarowski <piotr@debian.org>
+Build-Depends: debhelper (>= 5), dh-python
+Build-Depends-Indep: python (>= 2.6.6-3), python-setuptools (>= 0.6b3-1~),
+ python3, python3-setuptools
+#, python-sphinx
+Standards-Version: 3.9.2
+X-Python-Version: >= 2.5
+Vcs-Git: https://anonscm.debian.org/git/python-modules/packages/python-tempita.git
+Vcs-Browser: https://anonscm.debian.org/cgit/python-modules/packages/python-tempita.git
+
+Package: python-tempita
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}
+#Suggests: libjs-jquery
+Description: very small text templating language
+ Tempita is a small and simple Python text templating language mainly used
+ by Paster (python-pastescript) to roll out new projects.
+
+Package: python3-tempita
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Description: very small text templating language
+ Tempita is a small and simple Python text templating language mainly used
+ by Paster (python-pastescript) to roll out new projects.

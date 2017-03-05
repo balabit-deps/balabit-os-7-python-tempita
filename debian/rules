@@ -1,0 +1,60 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+package=python-tempita
+
+clean:
+	rm -f build-*
+	dh_testdir
+	dh_testroot
+	rm -rf build
+	find . -name *\.py[co] -exec rm -f {} \;
+	dh_clean build-docs
+
+build:
+build-arch: build
+build-indep: build
+
+# build-docs:
+#         dh_testdir
+#         dh_installdirs
+#         mkdir docs/_static # Sphinx needs it
+#         PYTHONPATH=. sphinx-build -N -q -E -b html docs/ debian/$(package)/usr/share/doc/$(package)/docs/
+#         rm -rf debian/$(package)/usr/share/doc/$(package)/docs/.doctrees
+#         dh_link /usr/share/javascript/jquery/jquery.js \
+#                 /usr/share/doc/$(package)/docs/_static/jquery.js
+#         echo "$(package): extra-license-file usr/share/doc/$(package)/docs/_sources/license.txt" \
+#                 >> debian/$(package)/usr/share/lintian/overrides/$(package)
+#         touch $@
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_installdirs
+	python setup.py install \
+		--no-compile \
+		--single-version-externally-managed \
+		--root $(CURDIR)/debian/$(package)
+	python3 setup.py install \
+		--root $(CURDIR)/debian/python3-tempita
+
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs
+	dh_installdocs
+	dh_compress -X.py -X.js
+	dh_fixperms
+	dh_python2
+	dh_python3
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary-arch:
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install
+
